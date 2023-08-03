@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Take a string return tuple"""
+"""Take a string and float return tuple"""
 from typing import Tuple, Union
 
 
