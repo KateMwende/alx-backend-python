@@ -51,7 +51,7 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestClass:
-
+    """Test class"""
     def a_method(self):
         return 42
 
