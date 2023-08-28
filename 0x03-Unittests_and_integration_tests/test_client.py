@@ -3,9 +3,10 @@
 Testing Client file
 """
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 from parameterized import parameterized
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -20,6 +21,18 @@ class TestGithubOrgClient(unittest.TestCase):
         test_sample = GithubOrgClient(input)
         test_sample.org()
         Mock.assert_called_once_with(f"https://api.github.com/orgs/{input}")
+
+    def test_public_repos_url(self):
+        """Test that the result of _public_repos_url is
+        the expected one based on the mocked payload.
+        """
+        with patch('client.GithubOrgClient.org',
+                   new_callable=PropertyMock) as mock:
+            payload = {"repos_url": "hey"}
+            mock.return_value = payload
+            test_sample = GithubOrgClient('trial')
+            result = test_sample._public_repos_url
+        self.assertEqual(result, payload["repos_url"])
 
 
 if __name__ == '__main__':
