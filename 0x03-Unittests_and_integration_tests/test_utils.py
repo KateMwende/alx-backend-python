@@ -57,6 +57,7 @@ class TestClass:
 
     @memoize
     def a_property(self):
+        """Test if memoization works"""
         return self.a_method()
 
 
