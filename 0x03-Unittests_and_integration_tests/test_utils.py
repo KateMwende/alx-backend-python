@@ -3,8 +3,8 @@
 Unit test for utlis file
 """
 import unittest
-from utils import access_nested_map
 from parameterized import parameterized
+from utils import access_nested_map
 
 
 class TestAccessNestedMap(unittest.TestCase):
